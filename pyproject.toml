@@ -1,6 +1,6 @@
 [project]
 name = "collabshell"
-version = "2.2.0"
+version = "2.2.1"
 description = "Colab Shell: Notebook and TTY client for Google Colab"
 readme = "README.md"
 requires-python = ">=3.14"
@@ -30,7 +30,7 @@ dependencies = [
 [tool.flet]
 org = "ng.kiri"
 product = "Colab Shell"
-build_number = 13
+build_number = 14
 # The light desktop client does not bundle flet-terminal (terminals render as
 # unknown controls under `flet run`); the full client does.
 desktop_flavor = "full"

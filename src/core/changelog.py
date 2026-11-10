@@ -3,6 +3,16 @@ date — works fully offline. One line per release; keep the entry for the
 current APP_VERSION in sync when bumping (guarded by tests)."""
 
 CHANGELOG: dict[str, str] = {
+    "2.2.1": (
+        "- The header credit pill and the compute chip update the moment the\n"
+        "  numbers change — an assistant credit reward lands instantly, and a\n"
+        "  Settings refresh propagates to the header\n"
+        "- About section rebuilt: contact, rate (Play Store on mobile, GitHub\n"
+        "  on desktop), more apps, live update line\n"
+        "- Python 3.14 toolchain across app and CI (flet ships 3.12–3.14;\n"
+        "  3.15 monitored until flet supports it)\n"
+        "- Update-feed and repo URLs point at the renamed repository"
+    ),
     "2.2.0": (
         "- Assistant: the app runs its own local model router — it attaches\n"
         "  to one already running or embeds its own, so the assistant works\n"
