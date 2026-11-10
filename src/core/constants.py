@@ -5,11 +5,11 @@ APP_FULL_NAME = "Colab Shell: Notebook & TTY"
 APP_VERSION = "2.2.0"
 APP_BUILD_NUMBER = 13
 UPDATE_CONFIG_URL = (
-    "https://raw.githubusercontent.com/Nwokike/CollabShell/main/version.json"
+    "https://raw.githubusercontent.com/Nwokike/Colab/main/version.json"
 )
-GITHUB_RELEASES_URL = "https://github.com/Nwokike/CollabShell/releases/latest"
+GITHUB_RELEASES_URL = "https://github.com/Nwokike/Colab/releases/latest"
 # The repo root (no /releases) — the About "star us" target on desktop.
-GITHUB_REPO_URL = "https://github.com/Nwokike/CollabShell"
+GITHUB_REPO_URL = "https://github.com/Nwokike/Colab"
 # About-section targets (same values as DDGS/KTV — one developer account).
 CONTACT_EMAIL = "hello@kiri.ng"
 KIRI_APPS_PLAY_URL = "https://play.google.com/store/apps/dev?id=5797833969564243342"
