@@ -3,7 +3,7 @@ name = "collabshell"
 version = "2.2.0"
 description = "Colab Shell: Notebook and TTY client for Google Colab"
 readme = "README.md"
-requires-python = ">=3.15"
+requires-python = ">=3.14"
 dependencies = [
     # The whole flet 1.1.0-dev family is co-released and cross-pinned
     # (flet-notifications 1.1.0.dev4 requires flet==1.1.0 exactly), so
