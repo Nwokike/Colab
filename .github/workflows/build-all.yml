@@ -36,6 +36,11 @@ jobs:
       MAKE_LATEST: ${{ steps.tag_info.outputs.MAKE_LATEST }}
     steps:
       - uses: actions/checkout@v4
+      # uv is not preinstalled on the runner: the notes generator needs it.
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
       - name: Generate Release Tag & Name
         id: tag_info
         run: |
