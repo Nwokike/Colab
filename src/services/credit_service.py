@@ -82,6 +82,19 @@ class CreditService:
 
         return DAILY_PREMIUM_CREDITS if getattr(state, "is_premium", False) else DAILY_FREE_CREDITS
 
+    def _bump_revision(self) -> None:
+        """Nudge observable readers (the header pill) after a balance mutation.
+
+        get_balance must NOT bump: the pill's reload reads the balance, and a
+        bump on read would retrigger the pill's effect forever.
+        """
+        try:
+            from core.state import state
+
+            state.credits_revision = (getattr(state, "credits_revision", 0) or 0) + 1
+        except Exception:
+            pass
+
     def _sync_state(self, balance: int) -> None:
         """Mirror the balance into the observable so readers (wallet dialog,
         pill) can use it synchronously, DDGS-style."""
@@ -148,6 +161,7 @@ class CreditService:
             if self._storage is not None:
                 await self._storage.set(STORAGE_CREDITS, str(self._balance))
             self._sync_state(self._balance)
+            self._bump_revision()
             return self._balance
 
     # ── settlement ─────────────────────────────────────────────────────────
@@ -216,6 +230,7 @@ class CreditService:
             if self._storage is not None:
                 await self._storage.set(STORAGE_CREDITS, str(self._balance))
             self._sync_state(self._balance)
+            self._bump_revision()
             return self._balance
 
     async def rollback(self, tx: str | None) -> int:
@@ -254,6 +269,7 @@ class CreditService:
             if self._storage is not None:
                 await self._storage.set(STORAGE_CREDITS, str(self._balance))
             self._sync_state(self._balance)
+            self._bump_revision()
             return self._balance
 
     async def sweep_expired_holds(self, max_age_sec: float = ROLLBACK_SECONDS) -> int:

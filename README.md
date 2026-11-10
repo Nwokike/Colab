@@ -8,10 +8,10 @@
 
 <p align="center">
   <a href="https://play.google.com/store/apps/details?id=ng.kiri.collabshell"><img src="https://img.shields.io/badge/Google_Play-Android-3DDC84?style=for-the-badge&logo=google-play&logoColor=white" alt="Google Play Store" /></a>
-  <a href="https://github.com/Nwokike/Colab/releases/latest"><img src="https://img.shields.io/badge/Download_Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" /></a>
-  <a href="https://github.com/Nwokike/Colab/releases/latest"><img src="https://img.shields.io/badge/Download_Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" /></a>
+  <a href="https://github.com/Nwokike/CollabShell/releases/latest"><img src="https://img.shields.io/badge/Download_Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" /></a>
+  <a href="https://github.com/Nwokike/CollabShell/releases/latest"><img src="https://img.shields.io/badge/Download_Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" /></a>
   <img src="https://img.shields.io/badge/Built_with-Flet_1.1.0-00B0FF?style=for-the-badge&logo=flutter&logoColor=white" alt="Flet" />
-  <img src="https://img.shields.io/badge/Python-3.14-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Python-3.15-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
 </p>
 
 ---
@@ -21,11 +21,11 @@
 | Platform | Download | Notes |
 | :---: | :---: | :--- |
 | 🤖 **Android (Play Store)** | [![Play Store](https://img.shields.io/badge/Google_Play-414141?style=flat-square&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=ng.kiri.collabshell) | Recommended for Android mobile users |
-| 📱 **Android (APK)** | [![Download APK](https://img.shields.io/badge/Download_APK-3DDC84?style=flat-square&logo=android&logoColor=white)](https://github.com/Nwokike/Colab/releases/latest/download/collabshell-arm64-v8a.apk) | Direct APK download for 64-bit ARM64 devices |
-| 🪟 **Windows** | [![Windows Release](https://img.shields.io/badge/Download_Windows_Release-0078D6?style=flat-square&logo=windows&logoColor=white)](https://github.com/Nwokike/Colab/releases/latest/download/ColabShell_Setup.exe) | Automated standalone setup installer with desktop shortcut integration |
-| 🐧 **Linux (Debian/Ubuntu)** | [![Linux DEB](https://img.shields.io/badge/Download_Linux_DEB-FCC624?style=flat-square&logo=linux&logoColor=black)](https://github.com/Nwokike/Colab/releases/latest/download/ColabShell_amd64.deb) | Desktop package tailored for Ubuntu, Debian, Linux Mint & Pop!_OS |
-| 🎩 **Linux (Fedora/RHEL)** | [![Linux RPM](https://img.shields.io/badge/Download_Linux_RPM-E91E63?style=flat-square&logo=redhat&logoColor=white)](https://github.com/Nwokike/Colab/releases/latest/download/ColabShell_x86_64.rpm) | Desktop package tailored for Fedora, openSUSE, RHEL & CentOS |
-| 📦 **Linux (Universal Portable)** | [![Linux TAR.GZ](https://img.shields.io/badge/Download_Linux_TAR.GZ-9C27B0?style=flat-square&logo=linux&logoColor=white)](https://github.com/Nwokike/Colab/releases/latest/download/ColabShell_linux_x86_64.tar.gz) | Universal standalone portable archive for Arch, Alpine, Steam Deck & all distros |
+| 📱 **Android (APK)** | [![Download APK](https://img.shields.io/badge/Download_APK-3DDC84?style=flat-square&logo=android&logoColor=white)](https://github.com/Nwokike/CollabShell/releases/latest/download/collabshell-arm64-v8a.apk) | Direct APK download for 64-bit ARM64 devices |
+| 🪟 **Windows** | [![Windows Release](https://img.shields.io/badge/Download_Windows_Release-0078D6?style=flat-square&logo=windows&logoColor=white)](https://github.com/Nwokike/CollabShell/releases/latest/download/ColabShell_Setup.exe) | Automated standalone setup installer with desktop shortcut integration |
+| 🐧 **Linux (Debian/Ubuntu)** | [![Linux DEB](https://img.shields.io/badge/Download_Linux_DEB-FCC624?style=flat-square&logo=linux&logoColor=black)](https://github.com/Nwokike/CollabShell/releases/latest/download/ColabShell_amd64.deb) | Desktop package tailored for Ubuntu, Debian, Linux Mint & Pop!_OS |
+| 🎩 **Linux (Fedora/RHEL)** | [![Linux RPM](https://img.shields.io/badge/Download_Linux_RPM-E91E63?style=flat-square&logo=redhat&logoColor=white)](https://github.com/Nwokike/CollabShell/releases/latest/download/ColabShell_x86_64.rpm) | Desktop package tailored for Fedora, openSUSE, RHEL & CentOS |
+| 📦 **Linux (Universal Portable)** | [![Linux TAR.GZ](https://img.shields.io/badge/Download_Linux_TAR.GZ-9C27B0?style=flat-square&logo=linux&logoColor=white)](https://github.com/Nwokike/CollabShell/releases/latest/download/ColabShell_linux_x86_64.tar.gz) | Universal standalone portable archive for Arch, Alpine, Steam Deck & all distros |
 
 ---
 
@@ -34,6 +34,7 @@
 | Capability | Description |
 | :--- | :--- |
 | **Interactive PTY Terminal (TTY)** | Real-time live interactive terminal sessions directly connected via Google Colab's `/api/terminals` WebSocket tunnels. Themes follow the app's light/dark mode, and every terminal starts in `/content`. |
+| **The Assistant** | An agent that creates notebooks, runs code, explains cells and terminal output, and fixes errors — with an approval gate before anything is written, running on your own in-app model router. |
 | **Tabbed Workspace** | Seamlessly toggle between **Notebook** cell execution and live **Terminal** shell tabs inside active cloud runtimes. |
 | **Session Lifecycle Control** | Instantly create, list, restart, and stop active Google Colab sessions directly from your device with smart intent routing. |
 | **Hardware Tiers** | Provision CPU (always free), T4 GPU, or TPU v5e/v6e runtimes based on your Google tier limits. |
@@ -64,9 +65,21 @@
 - **Universal Storage & History Normalization** — Monkey-patched backend state persistence (`storage_patch.py`) guaranteeing history and execution logs save reliably across Android and Linux desktops.
 - **Native OS File Picker & Zip-and-Download** — Save files anywhere on your OS/Android device without permission headaches, and archive entire cloud folders on the fly.
 - **Dynamic Onboarding Guide** — 3-step walk-through onboarding introducing features with gesture-swipe controls.
-- **Preloaded Interstitial Ads** — Intelligent Google AdMob integration displaying ads seamlessly on mobile platforms.
 - **Non-Blocking Execution** — Asynchronous connection wrappers ensuring the Flet UI stays fully responsive during long remote computations.
 - **Tested & Ruff-Compliant** — pytest suite for the shortcut engine and notebook model; clean, formatted, strictly linted codebase.
+
+---
+
+## The Assistant
+
+An AI agent built into the app that **acts, not just explains**:
+
+- **Runs on your own router** — the app attaches to a local model router already running or embeds its own, so the assistant works with zero setup. The model picker shows the live catalog with rate hints; `auto` rotates across healthy models for you.
+- **Creates and edits your work** — ask for a starter notebook and the Assistant creates the tab, names it, and writes cells into it; it can list, create and switch notebook tabs, write cells, run code, read files, and explain or fix errors in your cells and terminal.
+- **Follow-up conversations** — terminal explanations keep their context: ask follow-up questions in the same dialog and hand the whole thread to the chat with one tap.
+- **Cancel any time** — Stop in chat, Cancel in the cell and terminal dialogs; cancelling aborts the request itself.
+- **1 credit per model step**, visible in the header, with a 50-credit daily budget (500 on Premium) that resets at 00:00 UTC. A low balance never stops a turn mid-way.
+- **Keyboard first** — `Alt+A` opens the Assistant anywhere, `Ctrl+K` opens the command palette, `Ctrl+I` asks about the active cell.
 
 ---
 

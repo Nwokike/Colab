@@ -66,4 +66,10 @@ async def get_usage_impl(
     result["cached"] = False
     result["reason"] = "ok"
     result["fetched_at"] = fresh["fetched_at"]
+    # Only a REAL fetch bumps: the chip's reload goes through the cache layer,
+    # so a bump on the cached path would retrigger its effect in a loop.
+    try:
+        state.usage_revision = (getattr(state, "usage_revision", 0) or 0) + 1
+    except Exception:
+        pass
     return result

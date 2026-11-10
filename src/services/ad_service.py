@@ -330,9 +330,8 @@ class AdService:
             ConnectionError,
             ImportError,
         ):
+            # A construction failure means NO ad was shown — nothing is earned
+            # (the docstring's rule). Do NOT call on_close here: the wallet's
+            # callback would credit the user for an impression nobody saw.
             logger.exception("Failed to trigger rewarded interstitial")
-            if asyncio.iscoroutinefunction(on_close):
-                await on_close()
-            else:
-                on_close()
             return False

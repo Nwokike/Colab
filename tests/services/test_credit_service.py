@@ -324,3 +324,33 @@ def test_status_refusal_keeps_a_valid_cached_token():
             ls.verify_token = real_verify
 
     asyncio.run(go())
+
+
+def test_balance_mutations_bump_the_header_revision():
+    """The header pill re-reads on credits_revision. A mutation that does NOT
+    bump leaves the pill stale — that was the ad-grant bug (owner watched an
+    ad, balance stayed 50). Every mutator must bump."""
+    from core.state import state
+
+    svc = _svc(50)
+    before = getattr(state, "credits_revision", 0)
+    asyncio.run(svc.add_credits(2))
+    assert getattr(state, "credits_revision", 0) == before + 1
+    tx = asyncio.run(svc.reserve(3))
+    before = getattr(state, "credits_revision", 0)
+    asyncio.run(svc.commit(tx, 3))
+    assert getattr(state, "credits_revision", 0) == before + 1
+    before = getattr(state, "credits_revision", 0)
+    asyncio.run(svc.charge(1))
+    assert getattr(state, "credits_revision", 0) == before + 1
+
+
+def test_get_balance_does_not_bump_the_revision():
+    """A read must not retrigger the pill's effect: the pill reloads BY reading
+    the balance, so a bump-on-read would loop forever."""
+    from core.state import state
+
+    svc = _svc(50)
+    before = getattr(state, "credits_revision", 0)
+    asyncio.run(svc.get_balance())
+    assert getattr(state, "credits_revision", 0) == before

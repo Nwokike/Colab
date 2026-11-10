@@ -206,9 +206,7 @@ def show_wallet_dialog(page: ft.Page, state, services) -> None:
             await asyncio.sleep(0.5)
 
     async def _on_watch_success():
-        new_balance = await _credits().add_credits(
-            AD_TOPUP_CREDITS, is_premium=is_premium
-        )
+        new_balance = await _credits().add_credits(AD_TOPUP_CREDITS)
         state.credits_remaining = new_balance
         # The chat header is an imperative view, not a state subscriber:
         # poke its pill or the balance behind this dialog stays stale until

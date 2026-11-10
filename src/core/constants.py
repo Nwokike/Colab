@@ -8,6 +8,12 @@ UPDATE_CONFIG_URL = (
     "https://raw.githubusercontent.com/Nwokike/CollabShell/main/version.json"
 )
 GITHUB_RELEASES_URL = "https://github.com/Nwokike/CollabShell/releases/latest"
+# The repo root (no /releases) — the About "star us" target on desktop.
+GITHUB_REPO_URL = "https://github.com/Nwokike/CollabShell"
+# About-section targets (same values as DDGS/KTV — one developer account).
+CONTACT_EMAIL = "hello@kiri.ng"
+KIRI_APPS_PLAY_URL = "https://play.google.com/store/apps/dev?id=5797833969564243342"
+KIRI_APPS_URL = "https://kiri.ng/projects"
 PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=ng.kiri.collabshell"
 PRIVACY_POLICY_URL = "https://kiri.ng/privacy"
 TERMS_OF_SERVICE_URL = "https://kiri.ng/terms"

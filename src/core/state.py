@@ -40,17 +40,15 @@ class AppState:
     # Bumped whenever a metered assistant turn settles, so the credit pill
     # re-reads the balance without a full rebuild.
     credits_revision: int = 0
+    # Bumped by a real compute-unit fetch (usage_ops), so the header chip
+    # reloads when Settings or the usage modal refreshes.
+    usage_revision: int = 0
     # The assistant credits line in Settings. Async-loaded, so it lives in
     # observable state: the controls in a component body are frozen, and the
     # loader cannot write to them (`flet/controls/value_types.py:64-66`).
     # None means "not loaded yet", so the section can skip the first fetch on
     # a screen the user has already visited.
     credits_copy: str | None = None
-    # Bumped when the Account section's compute-usage card has new values to
-    # show. The card keeps its own store at module level for its state machine
-    # (loading/error/reason), and this revision is what tells a subscribed
-    # screen to rebuild from it.
-    usage_revision: int = 0
     # The premium card's async-loaded data, in observable state for the same
     # reason as `credits_copy`: the card's body is built from these, so a
     # write repaints it without anyone mutating frozen controls.

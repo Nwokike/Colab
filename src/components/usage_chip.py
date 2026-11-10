@@ -58,9 +58,14 @@ def UsageChip() -> ft.Container:
         set_text(f"{balance:.2f} CU · {rate:.2f}/hr")
         set_visible(True)
 
+    # Re-read when a real fetch lands (Settings "Check now", the usage modal
+    # refresh, or any force-refresh) — the chip must never sit stale after the
+    # numbers changed somewhere else.
+    usage_revision = getattr(state, "usage_revision", 0)
+
     ft.use_effect(
         lambda: page_run_task(_load),
-        [state.is_authenticated, state.is_online],
+        [state.is_authenticated, state.is_online, usage_revision],
     )
 
     def page_run_task(coro_fn):

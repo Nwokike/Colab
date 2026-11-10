@@ -19,6 +19,11 @@ logger = logging.getLogger("usage_cache")
 
 CACHE_TTL_SEC = 24 * 3600
 
+# In-memory fallback for callers with no StorageService: keeps the read-through
+# contract (and the bump-once behavior) so a header subscriber cannot
+# re-fire on every fetch forever.
+_MEMORY_CACHE: dict | None = None
+
 
 async def read_cached_usage(storage) -> dict | None:
     """Return cached payload + fetched_at, or None (missing/corrupt)."""
@@ -81,8 +86,28 @@ async def get_usage_cached(services, auth_method: str = "oauth2") -> dict | None
     storage = getattr(services, "storage", None)
     colab = getattr(services, "colab", services)
     if storage is None:
-        # No storage reachable: pure fetch, no cache.
-        return await get_usage_impl(colab, auth_method)
+        # No storage reachable: keep the SAME read-through contract with an
+        # in-memory fallback, or a subscriber (the header chip) re-fires on
+        # every fetch bump forever.
+        global _MEMORY_CACHE
+        cached = _MEMORY_CACHE
+        if cached is not None and time.time() - cached["fetched_at"] < CACHE_TTL_SEC:
+            return {
+                "balance": cached["balance"],
+                "rate": cached["rate"],
+                "assignments": cached["assignments"],
+                "cached": True,
+                "reason": "ok",
+            }
+        fresh = await get_usage_impl(colab, auth_method)
+        if fresh is not None and not fresh.get("cached", True):
+            _MEMORY_CACHE = {
+                "balance": fresh["balance"],
+                "rate": fresh["rate"],
+                "assignments": fresh["assignments"],
+                "fetched_at": fresh.get("fetched_at", time.time()),
+            }
+        return fresh
 
     cached = await read_cached_usage(storage)
     if cached is not None and is_fresh(cached):
